@@ -74,7 +74,7 @@
         <span style="position:absolute;left:0;top:0;height:2px;background:var(--color-accent);transition:width .5s ease;width:{{ storyProgress }}"></span>
       </div>
       <div role="tablist" aria-label="Campaign story" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-6)">
-        <sc-for list="{{ story }}" as="st" hint-placeholder-count="12">
+        <sc-for list="{{ story }}" as="st" hint-placeholder-count="13">
           <button type="button" role="tab" aria-selected="{{ st.selected }}" onClick="{{ st.pick }}" style="padding:10px var(--space-4);border:2px solid {{ st.border }};background:{{ st.bg }};color:{{ st.ink }};font-family:var(--font-body);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s ease">{{ st.name }}</button>
         </sc-for>
       </div>
@@ -89,15 +89,26 @@
         <div style="border-left:2px solid var(--color-neutral-800);min-width:0">
           <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-3) var(--space-6);border-bottom:2px solid var(--color-neutral-800);font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">
             <span>Campaign CMP-0412</span>
-            <span style="color:var(--color-neutral-500)">Illustrative interface</span>
+            <span style="color:var(--color-neutral-500)">Illustrative platform view</span>
           </div>
-          <sc-for list="{{ record }}" as="r" hint-placeholder-count="12">
+          <sc-for list="{{ record }}" as="r" hint-placeholder-count="13">
             <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);padding:13px var(--space-6);border-bottom:2px solid #232121;font-size:13px;transition:opacity .4s ease;opacity:{{ r.opacity }}">
               <span style="color:{{ r.labelInk }}">{{ r.label }}</span>
               <span style="font-weight:700;color:{{ r.valueInk }}">{{ r.value }}</span>
             </div>
           </sc-for>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">Measurement provenance</div>
+      <h2 style="margin:var(--space-3) 0 0;max-width:1000px;font-family:var(--font-heading);font-weight:900;font-size:clamp(28px,4.2vw,64px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">Every number carries a confidence level.</h2>
+      <p style="margin:var(--space-4) 0 0;max-width:640px;font-size:16px;line-height:1.55;color:var(--color-neutral-400)">The OS doesn't just report a figure — it tells you how it was produced, so you know what it's safe to act on.</p>
+      <div style="margin-top:var(--space-8);padding-top:var(--space-6);border-top:2px solid var(--color-neutral-800)">
+        <dc-import name="MeasurementLadder" hint-size="100%,260px"></dc-import>
       </div>
     </div>
   </section>
@@ -115,6 +126,12 @@
           </button>
         </sc-for>
       </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <dc-import name="SystemLayers" hint-size="100%,420px"></dc-import>
     </div>
   </section>
 
@@ -145,14 +162,15 @@ const STORY = [
   ["Audience", "Who we need in the room.", "Audience defined by occasion and environment rather than a demographic slide, because that is how venues are actually bought.", "Campaign Builder", ["Audience", "Mainstream on-trade"]],
   ["Budget", "A budget the system can hold.", "Budget is attached to the campaign record, so every hold, booking and asset is costed against it as the plan is built.", "Annual Planner", ["Budget", "Allocated"]],
   ["Plan", "The plan becomes an object, not a deck.", "Flight windows, phases and priorities laid out on a calendar the whole operation can see.", "Annual Planner", ["Flight", "12 weeks"]],
-  ["Venues", "The network resolves to real places.", "Availability checked venue by venue — environment, occasion, format and season.", "Media / Venue Discovery", ["Venues matched", "24 venues"]],
   ["Media", "Inventory is held, then booked.", "Screens, LED, transparent displays and Brand Box units held as a single basket against the plan.", "Media / Venue Discovery", ["Inventory held", "62 screens"]],
+  ["Venues", "The network resolves to real places.", "Availability checked venue by venue — environment, occasion, format and season.", "Media / Venue Discovery", ["Venues matched", "24 venues"]],
   ["Assets", "Creative clears inside the record.", "Versions, formats and approvals live on the campaign, so nothing is chased over email.", "Campaign Deployment", ["Assets", "Approved"]],
-  ["Activation", "The campaign arrives in the venue.", "Schedules and device targets dispatched; crews, events and activations run off the same brief.", "Brand Box Management", ["Deployment", "Screens synced"]],
+  ["Deployment", "Approved assets move into position.", "Creative, schedules and device targets sync to the specific screens and venues booked — the campaign is staged before it goes live, not assembled on the day.", "Campaign Deployment", ["Deployment", "Screens synced"]],
+  ["Activation", "The campaign arrives in the venue.", "Crews, events and activations run off the same brief the system has been holding since the plan.", "Brand Box Management", ["Status", "Live in venue"]],
   ["Engagement", "Consumers take part.", "Plays, claims and opt-ins captured at the point of purchase, with consent.", "Engagement", ["Signals", "Receiving"]],
   ["Measurement", "Activity resolves into evidence.", "Counted per venue, screen and mechanic, and labelled with the confidence it was produced at.", "Measurement", ["Confidence", "Verified"]],
   ["Insight", "The result becomes a decision.", "Situation Room reads the campaign against the objective it was set — not against a vanity metric.", "Situation Room", ["Objective", "On track"]],
-  ["Next action", "The loop closes.", "Inventory, mechanic and creative re-weighted, and the next flight starts from this record.", "Optimisation", ["Next flight", "Re-weighted"]],
+  ["Optimisation", "The loop closes and the next flight starts smarter.", "Inventory, mechanic and creative re-weighted on what the evidence showed — the next flight starts from this record, not from zero.", "Optimisation", ["Next flight", "Re-weighted"]],
 ];
 
 const SURFACES = [
