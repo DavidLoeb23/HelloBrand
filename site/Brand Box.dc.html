@@ -46,7 +46,7 @@
     <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
       <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-6)">
         <h2 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(26px,3.8vw,58px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">Switch on a venue</h2>
-        <button type="button" onClick="{{ toggle }}" style="padding:18px var(--space-6);border:0;background:{{ btnBg }};color:{{ btnInk }};font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">{{ btnLabel }}</button>
+        <button type="button" onClick="{{ toggle }}" style="padding:18px var(--space-6);border:0;background:{{ btnBg }};color:{{ btnInk }};font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="{{ btnHoverBg }}">{{ btnLabel }}</button>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));margin-top:var(--space-6);border-top:2px solid var(--color-neutral-800)">
@@ -190,8 +190,9 @@ class Component extends DCLogic {
       statusDot: on ? ACC : "var(--color-neutral-500)",
       overlayO: done ? "1" : "0",
       btnLabel: on ? "Switch off" : "Switch on Brand Box",
-      btnBg: on ? "transparent" : ACC,
+      btnBg: on ? "transparent" : "var(--color-accent-600)",
       btnInk: on ? INK : "#ffffff",
+      btnHoverBg: on ? "background:var(--color-neutral-800)" : "background:var(--color-accent-700)",
       toggle: () => {
         const next = !this.state.on;
         this.setState({ on: next, step: 0 });
