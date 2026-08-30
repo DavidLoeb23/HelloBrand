@@ -49,9 +49,21 @@ later when business need justifies it.
 
 Approved Home v2 (`site/Hello Brand OS Home v2.dc.html`) is the current public-site visual
 reference. Existing Hello Brand brand assets remain brand authority. The `_ds/modernist...`
-token bundle supports the approved design; it does not independently define or replace the
-Hello Brand identity. UI/UX Pro Max is a QA/quality-control layer over that identity, not a
-master brand system or authority to redesign it.
+token bundle (`site/_ds/modernist-*/styles.css`) plus this file are the **binding source of
+truth** for tokens, layout conventions and positioning in this repo — not the UI/UX Pro Max
+skill's own dataset.
+
+**UI/UX Pro Max is UX/layout/pattern reasoning only** — a QA/quality-control layer (contrast,
+touch targets, focus states, responsive/interaction checks), never a master brand system or
+authority to redesign. Never run its `--design-system`/`--persist` flow in this repo — that
+generates and writes a new MASTER.md with its own colours/type/spacing, which would compete
+with the binding source above. If one of its checks conflicts with the approved tokens or
+identity, flag the conflict and ask rather than silently overriding either side.
 
 The earlier "Hello Brand OS 2.0" (Chakra Petch / Plus Jakarta Sans / signal-mark) proposal is
 **superseded — exploratory only. Do not implement it.**
+
+Note: `docs/01-design-system.md` and `app/globals.css` (Next.js App Router conventions) do not
+exist in this repo — that naming belongs to `hello-brand-dxp`, which this repo's sessions
+cannot access. Do not create those paths here to satisfy a request that names them; flag the
+mismatch instead.
