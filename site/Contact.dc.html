@@ -25,6 +25,7 @@
 
 <div style="background:#141313;overflow-x:hidden">
   <dc-import name="SiteNav" active="contact" crumb="Page 07 · Contact / Start" hint-size="100%,120px"></dc-import>
+  <main id="main-content">
 
   <section style="border-bottom:2px solid var(--color-neutral-800)">
     <div style="max-width:1560px;margin:0 auto;padding:clamp(72px,12vh,150px) var(--space-6) var(--space-8)">
@@ -81,7 +82,7 @@
             <span style="display:block;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">{{ noteLabel }}</span>
             <textarea name="note" rows="3" placeholder="{{ notePlaceholder }}" style="width:100%;box-sizing:border-box;margin-top:10px;padding:14px 0;background:transparent;border:0;border-bottom:2px solid var(--color-neutral-700);color:var(--color-neutral-100);font-size:16px;resize:vertical" style-focus="border-color:var(--color-accent);outline:none"></textarea>
           </label>
-          <button type="submit" style="padding:20px var(--space-8);border:0;background:var(--color-accent);color:#ffffff;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:var(--color-accent-600)">{{ activeCta }}</button>
+          <button type="submit" style="padding:20px var(--space-8);border:0;background:var(--color-accent-600);color:#ffffff;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:var(--color-accent-700)">{{ activeCta }}</button>
           <p style="margin:var(--space-4) 0 0;font-size:12px;line-height:1.5;color:var(--color-neutral-500)">{{ formNote }}</p>
         </form>
       </div>
@@ -107,6 +108,7 @@
     </div>
   </section>
 
+  </main>
   <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
 </div>
 
