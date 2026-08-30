@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/styles.css" />
+<script src="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" />
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#141313; color:var(--color-neutral-400); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+  a { color:var(--color-neutral-100); text-decoration:none; }
+  a:hover { color:var(--color-accent-400); }
+  ::selection { background:var(--color-accent); color:#ffffff; }
+  :focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  @keyframes hb-pulse { 0%,100% { opacity:1 } 50% { opacity:.15 } }
+</style>
+</helmet>
+
+<div style="background:#141313;overflow-x:hidden">
+  <dc-import name="SiteNav" active="brandbox" crumb="Page 03 · Brand Box" hint-size="100%,120px"></dc-import>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:clamp(72px,12vh,150px) var(--space-6) var(--space-8)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-8)">
+        <span style="width:7px;height:7px;background:var(--color-accent);animation:hb-pulse 1.8s ease-in-out infinite"></span>
+        <span style="font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--color-neutral-400)">Brand Box · connected venue media</span>
+      </div>
+      <h1 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,7.4vw,128px);line-height:.88;letter-spacing:-.05em;text-transform:uppercase;color:var(--color-neutral-100)">Turn venues into<br /><span style="color:var(--color-accent)">connected brand environments.</span></h1>
+      <p style="margin:var(--space-8) 0 0;max-width:520px;font-size:19px;line-height:1.5;color:var(--color-neutral-400)">A screen, a mechanic and a reward, installed where the purchase happens — and wired into the campaign record.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:var(--space-8)">
+        <a href="Contact.dc.html" style="padding:20px var(--space-8);background:var(--color-accent);color:#ffffff;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="background:var(--color-accent-600)">Connect a venue</a>
+        <a href="#chain" style="padding:20px var(--space-8);border:2px solid var(--color-neutral-600);color:var(--color-neutral-100);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="border-color:var(--color-neutral-100)">Explore Brand Box</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="chain" style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-6)">
+        <h2 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(26px,3.8vw,58px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">Switch on a venue</h2>
+        <button type="button" onClick="{{ toggle }}" style="padding:18px var(--space-6);border:0;background:{{ btnBg }};color:{{ btnInk }};font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">{{ btnLabel }}</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));margin-top:var(--space-6);border-top:2px solid var(--color-neutral-800)">
+        <div style="position:relative;min-height:520px;border-bottom:2px solid var(--color-neutral-800);min-width:0">
+          <div class="grayscale" style="position:absolute;inset:0">
+            <image-slot id="bb-venue" style="width:100%;height:100%" shape="rect" fit="cover" placeholder="Venue interior with screen wall"></image-slot>
+          </div>
+          <div aria-hidden="true" style="position:absolute;inset:0;transition:background .8s ease;background:{{ scrim }}"></div>
+          <div style="position:absolute;left:var(--space-6);top:var(--space-6);display:flex;align-items:center;gap:8px;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:{{ statusInk }}"><span style="width:7px;height:7px;transition:background .4s ease;background:{{ statusDot }}"></span>{{ statusLabel }}</div>
+          <div style="position:absolute;left:var(--space-6);right:var(--space-6);bottom:var(--space-6);transition:opacity .6s ease;opacity:{{ overlayO }}">
+            <div style="font-family:var(--font-heading);font-weight:900;font-size:clamp(22px,2.8vw,40px);line-height:1;text-transform:uppercase;color:#ffffff">Measurement live</div>
+            <div style="margin-top:10px;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-400)">Venue 0187 · signal received</div>
+          </div>
+        </div>
+        <div style="border-left:2px solid var(--color-neutral-800);border-bottom:2px solid var(--color-neutral-800);min-width:0">
+          <sc-for list="{{ chain }}" as="c" hint-placeholder-count="7">
+            <div style="display:flex;align-items:flex-start;gap:var(--space-4);padding:16px var(--space-6);border-bottom:2px solid #232121;transition:opacity .5s ease;opacity:{{ c.opacity }}">
+              <span style="width:8px;height:8px;margin-top:7px;flex-shrink:0;transition:background .5s ease;background:{{ c.dot }}"></span>
+              <span style="min-width:0">
+                <span style="display:block;font-family:var(--font-heading);font-weight:900;font-size:clamp(14px,1.3vw,18px);letter-spacing:.06em;text-transform:uppercase;color:{{ c.ink }}">{{ c.label }}</span>
+                <span style="display:block;margin-top:6px;font-size:13px;line-height:1.45;color:var(--color-neutral-400)">{{ c.detail }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800);background:#1b1a1a">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <h2 style="margin:0;max-width:1000px;font-family:var(--font-heading);font-weight:900;font-size:clamp(26px,3.8vw,58px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">Screen + content + venue<br />+ consumer + data</h2>
+      <p style="margin:var(--space-4) 0 0;max-width:640px;font-size:16px;line-height:1.55;color:var(--color-neutral-400)">Brand Box is not digital signage. Its value is what it is attached to — the campaign record, the mechanic and the measurement framework.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:var(--space-8);border-top:2px solid var(--color-neutral-800)">
+        <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="10">
+          <div style="padding:var(--space-6) var(--space-4) var(--space-6) 0;border-right:2px solid #232121;border-bottom:2px solid #232121;min-width:0">
+            <div style="font-size:9px;font-weight:800;letter-spacing:.2em;color:var(--color-neutral-500)">{{ c.index }}</div>
+            <div style="margin-top:var(--space-3);font-family:var(--font-heading);font-weight:900;font-size:17px;line-height:1.1;text-transform:uppercase;color:var(--color-neutral-100)">{{ c.name }}</div>
+            <div style="margin-top:8px;font-size:13px;line-height:1.5;color:var(--color-neutral-400)">{{ c.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:var(--space-6) 0 0;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-500)">Capability list requires confirmation against current Brand Box specification</p>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-8)">
+        <div style="min-width:0">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-400)">Verified campaign evidence</div>
+          <p style="margin:var(--space-4) 0 0;font-family:var(--font-heading);font-weight:900;font-size:clamp(24px,2.8vw,40px);line-height:1.05;letter-spacing:-.025em;color:var(--color-neutral-100);text-wrap:pretty">What a connected venue produces that a poster cannot.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--space-6);min-width:0">
+          <div><div style="font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,3.2vw,48px);line-height:1;color:var(--color-accent-400)">62,000+</div><div style="margin-top:8px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-400)">Reward claims</div></div>
+          <div><div style="font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,3.2vw,48px);line-height:1;color:var(--color-neutral-100)">11,414</div><div style="margin-top:8px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-400)">Sign-ups · 12-week run</div></div>
+          <div><div style="font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,3.2vw,48px);line-height:1;color:var(--color-neutral-100)">+44%</div><div style="margin-top:8px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-400)">Avg. engagement lift</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px">
+      <div style="padding:var(--space-6) var(--space-8) var(--space-6) 0;min-width:0">
+        <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">For brands</div>
+        <h2 style="margin:var(--space-4) 0 0;font-family:var(--font-heading);font-weight:900;font-size:clamp(24px,3vw,42px);line-height:1;letter-spacing:-.025em;text-transform:uppercase;color:var(--color-neutral-100)">Put a mechanic<br />where the money moves.</h2>
+        <a href="Contact.dc.html" style="display:inline-block;margin-top:var(--space-6);padding:18px var(--space-8);background:var(--color-accent);color:#ffffff;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="background:var(--color-accent-600)">Connect a venue</a>
+      </div>
+      <div style="padding:var(--space-6) 0 var(--space-6) var(--space-8);border-left:2px solid var(--color-neutral-800);min-width:0">
+        <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">For venues</div>
+        <h2 style="margin:var(--space-4) 0 0;font-family:var(--font-heading);font-weight:900;font-size:clamp(24px,3vw,42px);line-height:1;letter-spacing:-.025em;text-transform:uppercase;color:var(--color-neutral-100)">Earn from the screens<br />already on your wall.</h2>
+        <a href="Media + Venues.dc.html" style="display:inline-block;margin-top:var(--space-6);padding:18px var(--space-8);border:2px solid var(--color-neutral-600);color:var(--color-neutral-100);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="border-color:var(--color-neutral-100)">List my venue</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+const CHAIN = [
+  ["Venue", "A real place with real footfall — bar, tavern, mall, forecourt or event floor."],
+  ["Brand Box connected", "The unit comes online and registers against the venue record."],
+  ["Screen / content live", "Campaign creative deployed from the cloud, scheduled to the venue's day-parts."],
+  ["Mobile / QR engagement", "The screen hands off to the phone — no app, no download."],
+  ["Consumer participation", "A game, a mechanic or a reward, played at the point of purchase."],
+  ["Signal received", "Play, claim and opt-in written back with consent."],
+  ["Measurement", "Counted against the venue and screen that produced it."],
+];
+
+const CAPABILITIES = [
+  ["Cloud content management", "Creative scheduled and swapped remotely, per venue and day-part."],
+  ["Connected screens", "Units report status, playout and uptime."],
+  ["Campaign deployment", "Assets dispatched from the campaign record, not by USB stick."],
+  ["QR / mobile interaction", "Screen-to-phone handoff with no app install."],
+  ["Games", "Play mechanics built for a 30-second attention window."],
+  ["Rewards", "Claimable value verified at the point of purchase."],
+  ["Loyalty", "Repeat recognition across venues and campaigns."],
+  ["Consumer experiences", "Moments people actually want to take part in."],
+  ["Live campaign visibility", "What is running, where, right now."],
+  ["Measurement", "Interactions attributed to venue, screen and mechanic."],
+];
+
+class Component extends DCLogic {
+  state = { on: false, step: 0 };
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  run() {
+    clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      this.setState((s) => {
+        if (s.step >= CHAIN.length) { clearInterval(this.timer); return null; }
+        return { step: s.step + 1 };
+      });
+    }, 700);
+  }
+
+  renderVals() {
+    const { on, step } = this.state;
+    const ACC = "var(--color-accent)";
+    const INK = "var(--color-neutral-100)";
+    const done = on && step >= CHAIN.length;
+
+    return {
+      chain: CHAIN.map((c, i) => ({
+        label: c[0],
+        detail: c[1],
+        opacity: on && i < step ? "1" : "0.32",
+        dot: on && i < step ? ACC : "var(--color-neutral-600)",
+        ink: on && i < step ? INK : "var(--color-neutral-400)",
+      })),
+      scrim: on ? "linear-gradient(180deg,rgba(20,19,19,.12) 0%,rgba(20,19,19,.82) 100%)" : "rgba(20,19,19,.74)",
+      statusLabel: on ? "Brand Box connected" : "Venue · disconnected",
+      statusInk: on ? "var(--color-accent-400)" : "var(--color-neutral-400)",
+      statusDot: on ? ACC : "var(--color-neutral-500)",
+      overlayO: done ? "1" : "0",
+      btnLabel: on ? "Switch off" : "Switch on Brand Box",
+      btnBg: on ? "transparent" : ACC,
+      btnInk: on ? INK : "#ffffff",
+      toggle: () => {
+        const next = !this.state.on;
+        this.setState({ on: next, step: 0 });
+        clearInterval(this.timer);
+        if (next) this.run();
+      },
+      capabilities: CAPABILITIES.map((c, i) => ({
+        index: (i + 1 < 10 ? "0" : "") + (i + 1),
+        name: c[0],
+        detail: c[1],
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

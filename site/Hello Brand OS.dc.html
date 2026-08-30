@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/styles.css" />
+<script src="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" />
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#141313; color:var(--color-neutral-400); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+  a { color:var(--color-neutral-100); text-decoration:none; }
+  a:hover { color:var(--color-accent-400); }
+  ::selection { background:var(--color-accent); color:#ffffff; }
+  :focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  @keyframes hb-pulse { 0%,100% { opacity:1 } 50% { opacity:.15 } }
+  @keyframes hb-drift { from { transform:translateY(0) } to { transform:translateY(56px) } }
+</style>
+</helmet>
+
+<div style="background:#141313;overflow-x:hidden">
+  <dc-import name="SiteNav" active="os" crumb="Page 01 · Hello Brand OS" hint-size="100%,120px"></dc-import>
+
+  <section style="position:relative;overflow:hidden;border-bottom:2px solid var(--color-neutral-800)">
+    <div aria-hidden="true" style="position:absolute;inset:-56px 0 0 0;background-image:linear-gradient(rgba(68,65,65,.45) 2px,transparent 2px),linear-gradient(90deg,rgba(68,65,65,.45) 2px,transparent 2px);background-size:56px 56px;animation:hb-drift 34s linear infinite;mask-image:radial-gradient(ellipse 70% 65% at 25% 40%,black 10%,transparent 95%);-webkit-mask-image:radial-gradient(ellipse 70% 65% at 25% 40%,black 10%,transparent 95%)"></div>
+    <div style="position:relative;max-width:1560px;margin:0 auto;padding:clamp(72px,13vh,160px) var(--space-6)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-8)">
+        <span style="width:7px;height:7px;background:var(--color-accent);animation:hb-pulse 1.8s ease-in-out infinite"></span>
+        <span style="font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--color-neutral-400)">The orchestration layer</span>
+      </div>
+      <h1 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(44px,8.2vw,142px);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;color:var(--color-neutral-100)">One campaign.<br /><span style="color:var(--color-accent)">One operating system.</span></h1>
+      <p style="margin:var(--space-8) 0 0;max-width:520px;font-size:19px;line-height:1.5;color:var(--color-neutral-400)">Strategy, media, venues, creative, activation and data run as one coordinated operation — not fifteen suppliers reporting separately.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:var(--space-8)">
+        <a href="Contact.dc.html" style="padding:20px var(--space-8);background:var(--color-accent);color:#ffffff;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="background:var(--color-accent-600)">Build a campaign</a>
+        <a href="#story" style="padding:20px var(--space-8);border:2px solid var(--color-neutral-600);color:var(--color-neutral-100);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="border-color:var(--color-neutral-100)">Follow a campaign</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">The operating loop</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-top:var(--space-6);border-top:2px solid var(--color-neutral-800)">
+        <sc-for list="{{ loop }}" as="s" hint-placeholder-count="7">
+          <div style="position:relative;padding:var(--space-6) var(--space-4) var(--space-6) 0;min-width:0">
+            <span style="position:absolute;top:-7px;left:0;width:12px;height:12px;background:{{ s.dot }}"></span>
+            <span style="display:block;font-size:9px;font-weight:800;letter-spacing:.2em;color:var(--color-neutral-400)">{{ s.index }}</span>
+            <span style="display:block;margin-top:10px;font-family:var(--font-heading);font-weight:900;font-size:clamp(15px,1.4vw,20px);letter-spacing:.02em;text-transform:uppercase;color:var(--color-neutral-100)">{{ s.name }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" style="border-bottom:2px solid var(--color-neutral-800);background:#1b1a1a">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-6)">
+        <h2 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(28px,4.2vw,68px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">One campaign,<br />moving through the system.</h2>
+        <div style="display:flex;align-items:center;gap:var(--space-4)">
+          <span style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">{{ storyCounter }}</span>
+          <button type="button" onClick="{{ storyPrev }}" aria-label="Previous step" style="width:46px;height:46px;border:2px solid var(--color-neutral-600);background:transparent;color:var(--color-neutral-100);font-family:var(--font-body);cursor:pointer" style-hover="border-color:var(--color-neutral-100)">←</button>
+          <button type="button" onClick="{{ storyNext }}" aria-label="Next step" style="width:46px;height:46px;border:2px solid var(--color-neutral-600);background:transparent;color:var(--color-neutral-100);font-family:var(--font-body);cursor:pointer" style-hover="border-color:var(--color-neutral-100)">→</button>
+        </div>
+      </div>
+
+      <div style="position:relative;margin-top:var(--space-8);height:2px;background:var(--color-neutral-800)">
+        <span style="position:absolute;left:0;top:0;height:2px;background:var(--color-accent);transition:width .5s ease;width:{{ storyProgress }}"></span>
+      </div>
+      <div role="tablist" aria-label="Campaign story" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-6)">
+        <sc-for list="{{ story }}" as="st" hint-placeholder-count="12">
+          <button type="button" role="tab" aria-selected="{{ st.selected }}" onClick="{{ st.pick }}" style="padding:10px var(--space-4);border:2px solid {{ st.border }};background:{{ st.bg }};color:{{ st.ink }};font-family:var(--font-body);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s ease">{{ st.name }}</button>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-top:var(--space-8);border-top:2px solid var(--color-neutral-800)">
+        <div style="padding:var(--space-8) var(--space-8) var(--space-8) 0;min-width:0">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-400)">Step {{ activeIndex }} · {{ activeName }}</div>
+          <p style="margin:var(--space-4) 0 0;font-family:var(--font-heading);font-weight:900;font-size:clamp(24px,2.8vw,42px);line-height:1.02;letter-spacing:-.025em;color:var(--color-neutral-100);text-wrap:pretty">{{ activeHeadline }}</p>
+          <p style="margin:var(--space-4) 0 0;max-width:540px;font-size:15px;line-height:1.55;color:var(--color-neutral-400)">{{ activeBody }}</p>
+          <div style="margin-top:var(--space-6);padding-top:var(--space-4);border-top:2px solid var(--color-neutral-800);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-400)">Surface · {{ activeSurface }}</div>
+        </div>
+        <div style="border-left:2px solid var(--color-neutral-800);min-width:0">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-3);padding:var(--space-3) var(--space-6);border-bottom:2px solid var(--color-neutral-800);font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">
+            <span>Campaign CMP-0412</span>
+            <span style="color:var(--color-neutral-500)">Illustrative interface</span>
+          </div>
+          <sc-for list="{{ record }}" as="r" hint-placeholder-count="12">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);padding:13px var(--space-6);border-bottom:2px solid #232121;font-size:13px;transition:opacity .4s ease;opacity:{{ r.opacity }}">
+              <span style="color:{{ r.labelInk }}">{{ r.label }}</span>
+              <span style="font-weight:700;color:{{ r.valueInk }}">{{ r.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <h2 style="margin:0;max-width:1000px;font-family:var(--font-heading);font-weight:900;font-size:clamp(28px,4.2vw,64px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">The operating environment</h2>
+      <p style="margin:var(--space-4) 0 0;max-width:640px;font-size:16px;line-height:1.55;color:var(--color-neutral-400)">Eleven surfaces, one record. Select a surface to see what it is for.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:var(--space-8);border-top:2px solid var(--color-neutral-800)">
+        <sc-for list="{{ surfaces }}" as="sf" hint-placeholder-count="11">
+          <button type="button" onClick="{{ sf.pick }}" style="text-align:left;border:0;border-right:2px solid #232121;border-bottom:2px solid #232121;background:{{ sf.bg }};padding:var(--space-6) var(--space-4);cursor:pointer;font-family:var(--font-body);min-width:0;transition:background .3s ease">
+            <span style="display:block;font-size:9px;font-weight:800;letter-spacing:.2em;color:{{ sf.meta }}">{{ sf.index }}</span>
+            <span style="display:block;margin-top:var(--space-3);font-family:var(--font-heading);font-weight:900;font-size:clamp(16px,1.5vw,21px);line-height:1.05;text-transform:uppercase;color:{{ sf.ink }}">{{ sf.name }}</span>
+            <span style="display:block;margin-top:var(--space-3);font-size:13px;line-height:1.5;color:{{ sf.body }}">{{ sf.detail }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;border-bottom:2px solid var(--color-neutral-800)">
+    <div class="grayscale" style="position:absolute;inset:0">
+      <image-slot id="os-bleed" style="width:100%;height:100%" shape="rect" fit="cover" placeholder="Operations / venue photography"></image-slot>
+    </div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,19,19,.95) 0%,rgba(20,19,19,.7) 60%,rgba(20,19,19,.35) 100%)"></div>
+    <div style="position:relative;max-width:1560px;margin:0 auto;padding:clamp(72px,13vh,170px) var(--space-6)">
+      <h2 style="margin:0;max-width:1000px;font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,5.6vw,96px);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;color:#ffffff">Technology does not<br />replace the operation.<br /><span style="color:var(--color-accent)">It coordinates it.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:var(--space-8)">
+        <a href="Contact.dc.html" style="padding:20px var(--space-8);background:var(--color-accent);color:#ffffff;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="background:var(--color-accent-600)">Build a campaign</a>
+        <a href="Measurement + Intelligence.dc.html" style="padding:20px var(--space-8);border:2px solid #ffffff;color:#ffffff;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="background:#ffffff;color:#141313">See measurement</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+const LOOP = ["Plan", "Book", "Deploy", "Activate", "Engage", "Measure", "Optimise"];
+
+const STORY = [
+  ["Objective", "It starts with a commercial objective.", "Trial, repeat purchase or brand love — stated as the thing the campaign must move, before any media is discussed.", "Campaign Builder", ["Objective", "Trial & repeat purchase"]],
+  ["Audience", "Who we need in the room.", "Audience defined by occasion and environment rather than a demographic slide, because that is how venues are actually bought.", "Campaign Builder", ["Audience", "Mainstream on-trade"]],
+  ["Budget", "A budget the system can hold.", "Budget is attached to the campaign record, so every hold, booking and asset is costed against it as the plan is built.", "Annual Planner", ["Budget", "Allocated"]],
+  ["Plan", "The plan becomes an object, not a deck.", "Flight windows, phases and priorities laid out on a calendar the whole operation can see.", "Annual Planner", ["Flight", "12 weeks"]],
+  ["Venues", "The network resolves to real places.", "Availability checked venue by venue — environment, occasion, format and season.", "Media / Venue Discovery", ["Venues matched", "24 venues"]],
+  ["Media", "Inventory is held, then booked.", "Screens, LED, transparent displays and Brand Box units held as a single basket against the plan.", "Media / Venue Discovery", ["Inventory held", "62 screens"]],
+  ["Assets", "Creative clears inside the record.", "Versions, formats and approvals live on the campaign, so nothing is chased over email.", "Campaign Deployment", ["Assets", "Approved"]],
+  ["Activation", "The campaign arrives in the venue.", "Schedules and device targets dispatched; crews, events and activations run off the same brief.", "Brand Box Management", ["Deployment", "Screens synced"]],
+  ["Engagement", "Consumers take part.", "Plays, claims and opt-ins captured at the point of purchase, with consent.", "Engagement", ["Signals", "Receiving"]],
+  ["Measurement", "Activity resolves into evidence.", "Counted per venue, screen and mechanic, and labelled with the confidence it was produced at.", "Measurement", ["Confidence", "Verified"]],
+  ["Insight", "The result becomes a decision.", "Situation Room reads the campaign against the objective it was set — not against a vanity metric.", "Situation Room", ["Objective", "On track"]],
+  ["Next action", "The loop closes.", "Inventory, mechanic and creative re-weighted, and the next flight starts from this record.", "Optimisation", ["Next flight", "Re-weighted"]],
+];
+
+const SURFACES = [
+  ["Campaign Builder", "Brief to booked inventory in one guided flow."],
+  ["Command Centre", "Every live campaign, venue and device in one operational view."],
+  ["Annual Planner", "Flights, phases and budget across the year."],
+  ["Media / Venue Discovery", "Search the network by environment, occasion and format."],
+  ["Campaign Deployment", "Assets, schedules and device targets dispatched to venues."],
+  ["Brand Box Management", "Content, screens and mechanics for connected venues."],
+  ["Engagement", "Mechanics, rewards and consented first-party capture."],
+  ["Situation Room", "Live campaign intelligence read against the objective."],
+  ["Measurement", "Counted activity at a stated confidence level."],
+  ["Reporting", "Client-ready evidence, per campaign and per venue."],
+  ["Optimisation", "Re-weighting the next flight on what the evidence showed."],
+];
+
+class Component extends DCLogic {
+  state = { step: 0, surface: 0 };
+
+  go(d) {
+    const n = STORY.length;
+    this.setState((s) => ({ step: (s.step + d + n) % n }));
+  }
+
+  renderVals() {
+    const step = this.state.step;
+    const sIdx = this.state.surface;
+    const ACC = "var(--color-accent)";
+    const INK = "var(--color-neutral-100)";
+
+    return {
+      loop: LOOP.map((name, i) => ({ index: "0" + (i + 1), name, dot: i === 0 ? ACC : "var(--color-neutral-600)" })),
+      story: STORY.map((s, i) => {
+        const on = i === step;
+        return {
+          name: s[0],
+          selected: on ? "true" : "false",
+          bg: on ? INK : "transparent",
+          ink: on ? "#141313" : "var(--color-neutral-400)",
+          border: on ? INK : "var(--color-neutral-600)",
+          pick: () => this.setState({ step: i }),
+        };
+      }),
+      storyCounter: "Step " + (step + 1) + " / " + STORY.length,
+      storyProgress: Math.round(((step + 1) / STORY.length) * 100) + "%",
+      storyPrev: () => this.go(-1),
+      storyNext: () => this.go(1),
+      activeIndex: (step + 1 < 10 ? "0" : "") + (step + 1),
+      activeName: STORY[step][0],
+      activeHeadline: STORY[step][1],
+      activeBody: STORY[step][2],
+      activeSurface: STORY[step][3],
+      record: STORY.map((s, i) => ({
+        label: s[4][0],
+        value: i <= step ? s[4][1] : "—",
+        opacity: i <= step ? "1" : "0.3",
+        labelInk: i === step ? INK : "var(--color-neutral-400)",
+        valueInk: i === step ? "var(--color-accent-400)" : "var(--color-neutral-400)",
+      })),
+      surfaces: SURFACES.map((sf, i) => {
+        const on = i === sIdx;
+        return {
+          index: "0" + (i + 1),
+          name: sf[0],
+          detail: sf[1],
+          bg: on ? "#1b1a1a" : "transparent",
+          ink: on ? INK : "var(--color-neutral-400)",
+          meta: on ? "var(--color-accent-400)" : "var(--color-neutral-500)",
+          body: on ? "var(--color-neutral-400)" : "var(--color-neutral-500)",
+          pick: () => this.setState({ surface: i }),
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

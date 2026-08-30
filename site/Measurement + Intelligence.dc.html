@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/styles.css" />
+<script src="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" />
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#141313; color:var(--color-neutral-400); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+  a { color:var(--color-neutral-100); text-decoration:none; }
+  a:hover { color:var(--color-accent-400); }
+  ::selection { background:var(--color-accent); color:#ffffff; }
+  :focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  @keyframes hb-pulse { 0%,100% { opacity:1 } 50% { opacity:.15 } }
+</style>
+</helmet>
+
+<div style="background:#141313;overflow-x:hidden">
+  <dc-import name="SiteNav" active="measurement" crumb="Page 04 · Measurement + Intelligence" hint-size="100%,120px"></dc-import>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:clamp(72px,12vh,150px) var(--space-6) var(--space-8)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-8)">
+        <span style="width:7px;height:7px;background:var(--color-accent);animation:hb-pulse 1.8s ease-in-out infinite"></span>
+        <span style="font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--color-neutral-400)">Measurement + Intelligence</span>
+      </div>
+      <h1 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(44px,8.2vw,142px);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;color:var(--color-neutral-100)">Every signal<br /><span style="color:var(--color-accent)">tells us something.</span></h1>
+      <p style="margin:var(--space-8) 0 0;max-width:520px;font-size:19px;line-height:1.5;color:var(--color-neutral-400)">See what's working. Know what happens next.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:var(--space-8)">
+        <a href="Contact.dc.html" style="padding:20px var(--space-8);background:var(--color-accent);color:#ffffff;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="background:var(--color-accent-600)">Measure my campaign</a>
+        <a href="#confidence" style="padding:20px var(--space-8);border:2px solid var(--color-neutral-600);color:var(--color-neutral-100);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="border-color:var(--color-neutral-100)">The confidence model</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <h2 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(26px,3.6vw,54px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:var(--color-neutral-100)">The commercial journey</h2>
+      <p style="margin:var(--space-4) 0 0;max-width:640px;font-size:16px;line-height:1.55;color:var(--color-neutral-400)">Five questions a campaign has to answer, in order. Select a stage to see the question it settles.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:var(--space-8);border-top:2px solid var(--color-neutral-800);border-bottom:2px solid var(--color-neutral-800)">
+        <sc-for list="{{ journey }}" as="j" hint-placeholder-count="5">
+          <button type="button" onClick="{{ j.pick }}" style="text-align:left;border:0;border-right:2px solid #232121;background:{{ j.bg }};padding:var(--space-6) var(--space-4);cursor:pointer;font-family:var(--font-body);min-width:0;transition:background .3s ease">
+            <span style="display:block;font-family:var(--font-heading);font-weight:900;font-size:clamp(16px,1.6vw,22px);letter-spacing:.06em;text-transform:uppercase;color:{{ j.ink }}">{{ j.name }}</span>
+            <span style="display:block;margin-top:var(--space-4);height:6px;background:#232121"><span style="display:block;height:6px;transition:width 1s ease;background:{{ j.fill }};width:{{ j.width }}"></span></span>
+            <span style="display:block;margin-top:10px;font-size:12px;color:{{ j.meta }}">{{ j.note }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="max-width:860px;padding:var(--space-6) 0 0">
+        <p style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(20px,2.4vw,34px);line-height:1.05;letter-spacing:-.02em;color:var(--color-neutral-100)">{{ activeQuestion }}</p>
+        <p style="margin:var(--space-3) 0 0;font-size:15px;line-height:1.55;color:var(--color-neutral-400)">{{ activeAnswer }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="confidence" style="border-bottom:2px solid var(--color-neutral-800);background:#1b1a1a">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <h2 style="margin:0;max-width:1200px;font-family:var(--font-heading);font-weight:900;font-size:clamp(28px,4.4vw,72px);line-height:.96;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">We don't just show numbers.<br />We tell you how much to trust them.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin-top:var(--space-8)">
+        <sc-for list="{{ rungs }}" as="r" hint-placeholder-count="4">
+          <button type="button" onClick="{{ r.pick }}" style="text-align:left;border:0;border-top:4px solid {{ r.rule }};background:transparent;padding:var(--space-6) var(--space-6) var(--space-6) 0;cursor:pointer;font-family:var(--font-body);min-width:0;transition:border-color .4s ease">
+            <span style="display:block;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:{{ r.meta }}">{{ r.confidence }}</span>
+            <span style="display:block;margin-top:var(--space-3);font-family:var(--font-heading);font-weight:900;font-size:clamp(22px,2.6vw,38px);letter-spacing:-.01em;text-transform:uppercase;transition:color .4s ease;color:{{ r.ink }}">{{ r.name }}</span>
+            <span style="display:block;margin-top:var(--space-4);font-size:13px;line-height:1.5;color:{{ r.body }}">{{ r.short }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:var(--space-8);border-top:2px solid var(--color-neutral-800)">
+        <div style="padding:var(--space-6) var(--space-8) var(--space-6) 0;min-width:0">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-400)">{{ activeRungName }} · definition</div>
+          <p style="margin:var(--space-4) 0 0;font-size:17px;line-height:1.5;color:var(--color-neutral-100)">{{ activeRungWhat }}</p>
+        </div>
+        <div style="padding:var(--space-6);border-left:2px solid var(--color-neutral-800);min-width:0">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">Use it for</div>
+          <p style="margin:var(--space-4) 0 0;font-size:15px;line-height:1.55;color:var(--color-neutral-400)">{{ activeRungUse }}</p>
+        </div>
+        <div style="padding:var(--space-6);border-left:2px solid var(--color-neutral-800);min-width:0">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">Never used for</div>
+          <p style="margin:var(--space-4) 0 0;font-size:15px;line-height:1.55;color:var(--color-neutral-400)">{{ activeRungNever }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <h2 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(26px,3.6vw,54px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;color:var(--color-neutral-100)">Where the signals come from</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:var(--space-8);border-top:2px solid var(--color-neutral-800)">
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="9">
+          <div style="padding:var(--space-6) var(--space-4) var(--space-6) 0;border-right:2px solid #232121;border-bottom:2px solid #232121;min-width:0">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="width:6px;height:6px;background:{{ s.dot }}"></span>
+              <span style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-500)">{{ s.tier }}</span>
+            </div>
+            <div style="margin-top:var(--space-3);font-family:var(--font-heading);font-weight:900;font-size:17px;line-height:1.1;text-transform:uppercase;color:var(--color-neutral-100)">{{ s.name }}</div>
+            <div style="margin-top:8px;font-size:13px;line-height:1.5;color:var(--color-neutral-400)">{{ s.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800);background:#1b1a1a">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--space-6)">
+        <div style="min-width:0">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-400)">The Situation Room</div>
+          <h2 style="margin:var(--space-3) 0 0;font-family:var(--font-heading);font-weight:900;font-size:clamp(26px,3.8vw,58px);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;color:var(--color-neutral-100)">One question per panel.<br />No dashboard wallpaper.</h2>
+        </div>
+        <span style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-500)">Illustrative interface · not live data</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:var(--space-8);border-top:2px solid var(--color-neutral-800)">
+        <sc-for list="{{ panels }}" as="p" hint-placeholder-count="4">
+          <div style="padding:var(--space-6);border-right:2px solid #232121;border-bottom:2px solid #232121;min-width:0">
+            <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-400)">{{ p.question }}</div>
+            <div style="margin-top:var(--space-4);font-family:var(--font-heading);font-weight:900;font-size:clamp(24px,2.6vw,36px);line-height:1;color:{{ p.valueInk }}">{{ p.value }}</div>
+            <div style="margin-top:var(--space-4);display:flex;align-items:center;gap:8px">
+              <span style="padding:4px 8px;border:2px solid {{ p.badgeRule }};font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:{{ p.badgeInk }}">{{ p.tier }}</span>
+              <span style="font-size:12px;color:var(--color-neutral-400)">{{ p.note }}</span>
+            </div>
+            <div style="margin-top:var(--space-4);font-size:13px;line-height:1.5;color:var(--color-neutral-400)">{{ p.action }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:clamp(64px,11vh,140px) var(--space-6)">
+      <p style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,5.4vw,92px);line-height:.92;letter-spacing:-.045em;text-transform:uppercase;color:var(--color-neutral-100)">See what's working.<br /><span style="color:var(--color-accent)">Know what happens next.</span></p>
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:var(--space-8)">
+        <a href="Contact.dc.html" style="padding:20px var(--space-8);background:var(--color-accent);color:#ffffff;font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="background:var(--color-accent-600)">Measure my campaign</a>
+        <a href="Work.dc.html" style="padding:20px var(--space-8);border:2px solid var(--color-neutral-600);color:var(--color-neutral-100);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase" style-hover="border-color:var(--color-neutral-100)">See the work</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+const JOURNEY = [
+  ["Reach", "100%", "Screens, venues, occasions", "Did we get in front of the right rooms?", "Playout and presence, venue by venue and day-part by day-part — measured against the plan, not against a national estimate."],
+  ["Engage", "72%", "Plays and interactions", "Did anyone actually take part?", "Plays, scans and interactions counted per screen and mechanic, so a weak venue is visible in week two rather than in the wrap report."],
+  ["Visit", "54%", "Footfall into venue", "Did it move people into the room?", "Venue-level participation read against the occasion it was bought for — match night, pay day, weekend trade."],
+  ["Convert", "38%", "Reward claimed at purchase", "Did it move product?", "Reward claims verified at the point of purchase, tied to the venue and the mechanic that produced them."],
+  ["Grow", "26%", "Returning, consented customers", "Did we build something we keep?", "Consented first-party records that carry into the next campaign — the compounding asset, not the once-off spike."],
+];
+
+const RUNGS = [
+  ["Estimated", "Lowest confidence", "An assumption, clearly flagged.", "An industry or historical assumption applied to a plan — nothing about this campaign has been observed yet.", "early feasibility and budget framing.", "reported results, ROI cases or client claims."],
+  ["Modelled", "Directional", "A projection from comparable work.", "A projection built from Hello Brand's own comparable campaigns, venue types and audience profiles.", "planning reach, sizing a flight and setting expectations before launch.", "stating what a campaign delivered."],
+  ["Measured", "Observed", "Counted by the platform.", "Counted activity from the platform itself — plays, claims, sign-ups and playouts, attributed to venue and device.", "in-flight optimisation and reporting what happened.", "person-level attribution claims without reconciliation."],
+  ["Verified", "Highest confidence", "Reconciled to a real person and place.", "Measured activity reconciled to a consented first-party record or a transaction, so each interaction is attributable to a person and a place.", "ROI cases, brand-lift claims and anything a client will be held to.", "nothing — this is the level we aim to report at."],
+];
+
+const SOURCES = [
+  ["Media", "Measured", "Playout, uptime and schedule delivery per screen."],
+  ["Venues", "Measured", "Venue-level participation and activation logs."],
+  ["Brand Box", "Verified", "Plays, claims and opt-ins at the point of purchase."],
+  ["Engagement", "Verified", "Consented first-party interaction records."],
+  ["CRM", "Verified", "Client-side records, reconciled where permitted."],
+  ["Activations", "Measured", "Field execution logs and crew reporting."],
+  ["Events", "Measured", "Attendance and participation at event activations."],
+  ["Consumer interactions", "Verified", "Repeat recognition across venues and campaigns."],
+  ["Approved measurement providers", "Modelled", "Third-party brand and audience studies, where commissioned."],
+];
+
+const PANELS = [
+  ["Is the campaign on objective?", "On track", "Verified", "Week 7 of 12", "No action — hold current weighting."],
+  ["Which venues are underperforming?", "4 venues", "Measured", "Below claim threshold", "Recommend re-weighting spend to top-quartile venues."],
+  ["Is the mechanic converting?", "+44%", "Verified", "Engagement lift vs. control", "Extend mechanic to the next flight."],
+  ["What do we know we didn't know?", "11,414", "Verified", "New consented records", "Carry audience into the next campaign."],
+];
+
+class Component extends DCLogic {
+  state = { stage: 0, rung: 3 };
+
+  renderVals() {
+    const { stage, rung } = this.state;
+    const ACC = "var(--color-accent)";
+    const INK = "var(--color-neutral-100)";
+
+    return {
+      journey: JOURNEY.map((j, i) => {
+        const on = i === stage;
+        return {
+          name: j[0],
+          width: j[1],
+          note: j[2],
+          bg: on ? "#1b1a1a" : "transparent",
+          ink: on ? INK : "var(--color-neutral-400)",
+          meta: on ? "var(--color-neutral-400)" : "var(--color-neutral-500)",
+          fill: on ? ACC : "var(--color-neutral-500)",
+          pick: () => this.setState({ stage: i }),
+        };
+      }),
+      activeQuestion: JOURNEY[stage][3],
+      activeAnswer: JOURNEY[stage][4],
+
+      rungs: RUNGS.map((r, i) => {
+        const on = i === rung;
+        return {
+          name: r[0],
+          confidence: r[1],
+          short: r[2],
+          rule: on ? ACC : "var(--color-neutral-800)",
+          ink: on ? INK : "var(--color-neutral-400)",
+          meta: on ? "var(--color-accent-400)" : "var(--color-neutral-500)",
+          body: on ? "var(--color-neutral-400)" : "var(--color-neutral-500)",
+          pick: () => this.setState({ rung: i }),
+        };
+      }),
+      activeRungName: RUNGS[rung][0],
+      activeRungWhat: RUNGS[rung][3],
+      activeRungUse: RUNGS[rung][4],
+      activeRungNever: RUNGS[rung][5],
+
+      sources: SOURCES.map((s) => ({
+        name: s[0],
+        tier: s[1],
+        detail: s[2],
+        dot: s[1] === "Verified" ? ACC : s[1] === "Measured" ? "var(--color-neutral-400)" : "var(--color-neutral-600)",
+      })),
+
+      panels: PANELS.map((p) => ({
+        question: p[0],
+        value: p[1],
+        tier: p[2],
+        note: p[3],
+        action: p[4],
+        valueInk: p[2] === "Verified" ? "var(--color-accent-400)" : INK,
+        badgeRule: p[2] === "Verified" ? ACC : "var(--color-neutral-600)",
+        badgeInk: p[2] === "Verified" ? "var(--color-accent-400)" : "var(--color-neutral-400)",
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

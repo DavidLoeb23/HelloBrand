@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/styles.css" />
+<script src="_ds/modernist-3339b9dd-d5eb-4bce-b673-ced91bc2d970/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" />
+<style>
+  body { margin:0; background:#141313; color:var(--color-neutral-400); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+  a { color:var(--color-neutral-100); text-decoration:none; }
+  a:hover { color:var(--color-accent-400); }
+  ::selection { background:var(--color-accent); color:#ffffff; }
+  :focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  input, textarea, select { font-family:var(--font-body); }
+  @keyframes hb-pulse { 0%,100% { opacity:1 } 50% { opacity:.15 } }
+</style>
+</helmet>
+
+<div style="background:#141313;overflow-x:hidden">
+  <dc-import name="SiteNav" active="contact" crumb="Page 07 · Contact / Start" hint-size="100%,120px"></dc-import>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:clamp(72px,12vh,150px) var(--space-6) var(--space-8)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:var(--space-8)">
+        <span style="width:7px;height:7px;background:var(--color-accent);animation:hb-pulse 1.8s ease-in-out infinite"></span>
+        <span style="font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--color-neutral-400)">Start here</span>
+      </div>
+      <h1 style="margin:0;font-family:var(--font-heading);font-weight:900;font-size:clamp(44px,8.2vw,142px);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;color:var(--color-neutral-100)">What are we<br /><span style="color:var(--color-accent)">building next?</span></h1>
+      <p style="margin:var(--space-8) 0 0;max-width:520px;font-size:19px;line-height:1.5;color:var(--color-neutral-400)">Pick the route that fits. We only ask for what that route actually needs.</p>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">Step 01 · What brings you here?</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:var(--space-6);border-top:2px solid var(--color-neutral-800)">
+        <sc-for list="{{ intents }}" as="i" hint-placeholder-count="7">
+          <button type="button" onClick="{{ i.pick }}" aria-pressed="{{ i.pressed }}" style="text-align:left;border:0;border-right:2px solid #232121;border-bottom:2px solid #232121;background:{{ i.bg }};padding:var(--space-6) var(--space-4);cursor:pointer;font-family:var(--font-body);min-width:0;transition:background .25s ease">
+            <span style="display:flex;align-items:center;gap:8px">
+              <span style="width:7px;height:7px;transition:background .25s ease;background:{{ i.dot }}"></span>
+              <span style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:{{ i.meta }}">Route {{ i.index }}</span>
+            </span>
+            <span style="display:block;margin-top:var(--space-4);font-family:var(--font-heading);font-weight:900;font-size:clamp(17px,1.7vw,23px);line-height:1.05;text-transform:uppercase;color:{{ i.ink }}">{{ i.label }}</span>
+            <span style="display:block;margin-top:var(--space-3);font-size:13px;line-height:1.5;color:{{ i.body }}">{{ i.detail }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800);background:#1b1a1a">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-8)">
+        <div style="min-width:0">
+          <div style="font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-400)">Step 02 · {{ activeLabel }}</div>
+          <h2 style="margin:var(--space-4) 0 0;font-family:var(--font-heading);font-weight:900;font-size:clamp(24px,3vw,42px);line-height:1.02;letter-spacing:-.025em;text-transform:uppercase;color:var(--color-neutral-100)">{{ activeHeadline }}</h2>
+          <p style="margin:var(--space-4) 0 0;max-width:520px;font-size:16px;line-height:1.55;color:var(--color-neutral-400)">{{ activeBody }}</p>
+          <div style="margin-top:var(--space-6);padding-top:var(--space-4);border-top:2px solid var(--color-neutral-800)">
+            <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-400)">Goes to</div>
+            <div style="margin-top:8px;font-size:15px;color:var(--color-neutral-100)">{{ activeOwner }}</div>
+            <div style="margin-top:var(--space-4);font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-neutral-400)">Typical response</div>
+            <div style="margin-top:8px;font-size:15px;color:var(--color-neutral-100)">{{ activeSla }}</div>
+          </div>
+        </div>
+
+        <form onSubmit="{{ submit }}" style="min-width:0;border-left:2px solid var(--color-neutral-800);padding-left:var(--space-8)">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+            <label style="display:block;margin-bottom:var(--space-6)">
+              <span style="display:block;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">{{ f.label }}</span>
+              <input type="{{ f.type }}" name="{{ f.name }}" placeholder="{{ f.placeholder }}" required="{{ f.required }}" style="width:100%;box-sizing:border-box;margin-top:10px;padding:14px 0;background:transparent;border:0;border-bottom:2px solid var(--color-neutral-700);color:var(--color-neutral-100);font-size:16px" style-focus="border-color:var(--color-accent);outline:none" />
+            </label>
+          </sc-for>
+          <label style="display:block;margin-bottom:var(--space-6)">
+            <span style="display:block;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">{{ noteLabel }}</span>
+            <textarea name="note" rows="3" placeholder="{{ notePlaceholder }}" style="width:100%;box-sizing:border-box;margin-top:10px;padding:14px 0;background:transparent;border:0;border-bottom:2px solid var(--color-neutral-700);color:var(--color-neutral-100);font-size:16px;resize:vertical" style-focus="border-color:var(--color-accent);outline:none"></textarea>
+          </label>
+          <button type="submit" style="padding:20px var(--space-8);border:0;background:var(--color-accent);color:#ffffff;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer" style-hover="background:var(--color-accent-600)">{{ activeCta }}</button>
+          <p style="margin:var(--space-4) 0 0;font-size:12px;line-height:1.5;color:var(--color-neutral-500)">{{ formNote }}</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:2px solid var(--color-neutral-800)">
+    <div style="max-width:1560px;margin:0 auto;padding:var(--space-8) var(--space-6);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-8)">
+      <div style="min-width:0">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">Direct</div>
+        <a href="mailto:contact@hellobrand.co.za" style="display:block;margin-top:var(--space-3);font-size:17px;color:var(--color-neutral-100)" style-hover="color:var(--color-accent-400)">contact@hellobrand.co.za</a>
+        <a href="tel:+27215697123" style="display:block;margin-top:8px;font-size:17px;color:var(--color-neutral-100)" style-hover="color:var(--color-accent-400)">+27 21 569 7123 ext. 233</a>
+      </div>
+      <div style="min-width:0">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">Where we are</div>
+        <div style="margin-top:var(--space-3);font-size:17px;line-height:1.5;color:var(--color-neutral-100)">Cape Town, South Africa</div>
+        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-500)">33.9°S 18.4°E · operating nationally</div>
+      </div>
+      <div style="min-width:0">
+        <div style="font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">Already a client</div>
+        <p style="margin:var(--space-3) 0 0;font-size:15px;line-height:1.5;color:var(--color-neutral-400)">Hello Brand OS access is issued by your account team. Use the existing-client route and we'll route it straight through.</p>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+const INTENTS = [
+  {
+    label: "I have a campaign",
+    detail: "Plan, build and run it end to end.",
+    headline: "Tell us the objective, not the media plan.",
+    body: "We come back with the venues, mechanics and measurement framework that fit the outcome you need — before anyone talks about inventory.",
+    owner: "Campaign team",
+    sla: "Same working day",
+    cta: "Build a campaign",
+    fields: [["Name", "text", "name", true, "Your name"], ["Brand / company", "text", "company", true, "Brand or company"], ["Work email", "email", "email", true, "you@company.co.za"], ["Objective", "text", "objective", false, "e.g. trial in mainstream on-trade"]],
+    noteLabel: "Anything else",
+    notePlaceholder: "Timing, budget range, markets — only if useful now.",
+  },
+  {
+    label: "I need media",
+    detail: "Find venues, screens and availability.",
+    headline: "Give us the moment you want to own.",
+    body: "Occasion, market and window. We'll send the environments and formats that match, with indicative availability.",
+    owner: "Media & venues team",
+    sla: "1–2 working days",
+    cta: "Find media",
+    fields: [["Name", "text", "name", true, "Your name"], ["Agency / brand", "text", "company", true, "Agency or brand"], ["Work email", "email", "email", true, "you@company.co.za"], ["Markets & window", "text", "markets", false, "e.g. Gauteng + WC, Q1"]],
+    noteLabel: "Brief detail",
+    notePlaceholder: "Audience, occasion, flight length.",
+  },
+  {
+    label: "I own a venue",
+    detail: "List a venue and add inventory.",
+    headline: "Two fields to start. That's it.",
+    body: "Tell us where the venue is and what's on the wall. We handle the rest, including whether Brand Box makes sense for your floor.",
+    owner: "Venue network team",
+    sla: "2 working days",
+    cta: "List my venue",
+    fields: [["Venue name", "text", "venue", true, "Venue name"], ["Suburb / city", "text", "location", true, "e.g. Observatory, Cape Town"], ["Contact email", "email", "email", true, "you@venue.co.za"], ["Screens on site", "text", "screens", false, "e.g. 3 screens, 1 projector"]],
+    noteLabel: "Anything else",
+    notePlaceholder: "Trading pattern, peak nights, existing screen supplier.",
+  },
+  {
+    label: "I need Brand Box",
+    detail: "Connect a venue or an estate.",
+    headline: "One venue or a whole estate.",
+    body: "We scope the install, the mechanic and the measurement together — a connected screen without a mechanic is just signage.",
+    owner: "Brand Box team",
+    sla: "2 working days",
+    cta: "Connect a venue",
+    fields: [["Name", "text", "name", true, "Your name"], ["Company", "text", "company", true, "Company"], ["Work email", "email", "email", true, "you@company.co.za"], ["Venues involved", "text", "venues", false, "e.g. 12 venues, national"]],
+    noteLabel: "What you're trying to do",
+    notePlaceholder: "The consumer behaviour you want to change.",
+  },
+  {
+    label: "I need measurement",
+    detail: "Campaign intelligence and reporting.",
+    headline: "What question isn't being answered?",
+    body: "We'll show you which parts of it can be measured, which can only be modelled, and what it takes to reach verified.",
+    owner: "Data & measurement team",
+    sla: "1–2 working days",
+    cta: "Discuss measurement",
+    fields: [["Name", "text", "name", true, "Your name"], ["Brand / company", "text", "company", true, "Brand or company"], ["Work email", "email", "email", true, "you@company.co.za"], ["The question", "text", "question", false, "e.g. did in-venue activity move sales?"]],
+    noteLabel: "Current reporting",
+    notePlaceholder: "What you get today and where it falls short.",
+  },
+  {
+    label: "I want to partner",
+    detail: "Technology, data, events or experiences.",
+    headline: "What do you plug into?",
+    body: "Specialist capability connected into the ecosystem — technology, data, events, experiences, merchandise or field execution.",
+    owner: "Partnerships",
+    sla: "3–5 working days",
+    cta: "Partner with us",
+    fields: [["Name", "text", "name", true, "Your name"], ["Company", "text", "company", true, "Company"], ["Work email", "email", "email", true, "you@company.co.za"], ["Capability", "text", "capability", false, "e.g. audience data, LED production"]],
+    noteLabel: "The fit",
+    notePlaceholder: "Where you'd sit in a campaign and who you work with today.",
+  },
+  {
+    label: "I am an existing client",
+    detail: "Access campaigns, reporting and the OS.",
+    headline: "We'll route you to your account team.",
+    body: "Hello Brand OS access is issued per account. Confirm who you are and we'll get your credentials sorted rather than sending you to a dead login screen.",
+    owner: "Your account team",
+    sla: "Same working day",
+    cta: "Request OS access",
+    fields: [["Name", "text", "name", true, "Your name"], ["Brand / company", "text", "company", true, "Brand or company"], ["Work email", "email", "email", true, "you@company.co.za"]],
+    noteLabel: "What you need",
+    notePlaceholder: "Access, a report, or a campaign question.",
+  },
+];
+
+class Component extends DCLogic {
+  state = { intent: 0 };
+
+  renderVals() {
+    const i = this.state.intent;
+    const it = INTENTS[i];
+    const ACC = "var(--color-accent)";
+    const INK = "var(--color-neutral-100)";
+
+    return {
+      intents: INTENTS.map((x, idx) => {
+        const on = idx === i;
+        return {
+          index: "0" + (idx + 1),
+          label: x.label,
+          detail: x.detail,
+          pressed: on ? "true" : "false",
+          bg: on ? "#1b1a1a" : "transparent",
+          ink: on ? INK : "var(--color-neutral-400)",
+          meta: on ? "var(--color-accent-400)" : "var(--color-neutral-500)",
+          body: on ? "var(--color-neutral-400)" : "var(--color-neutral-500)",
+          dot: on ? ACC : "var(--color-neutral-600)",
+          pick: () => this.setState({ intent: idx }),
+        };
+      }),
+      activeLabel: it.label,
+      activeHeadline: it.headline,
+      activeBody: it.body,
+      activeOwner: it.owner,
+      activeSla: it.sla,
+      activeCta: it.cta,
+      fields: it.fields.map((f) => ({
+        label: f[0],
+        type: f[1],
+        name: f[2],
+        required: f[3] ? "required" : null,
+        placeholder: f[4],
+      })),
+      noteLabel: it.noteLabel,
+      notePlaceholder: it.notePlaceholder,
+      formNote: "Routed to " + it.owner.toLowerCase() + ". No newsletter, no sales sequence.",
+      submit: (ev) => {
+        ev.preventDefault();
+        const fd = new FormData(ev.target);
+        const lines = [];
+        fd.forEach((v, k) => { if (v) lines.push(k + ": " + v); });
+        const body = "Route: " + it.label + "\n" + lines.join("\n");
+        window.location.href = "mailto:contact@hellobrand.co.za?subject=" + encodeURIComponent(it.cta + " — " + it.label) + "&body=" + encodeURIComponent(body);
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
