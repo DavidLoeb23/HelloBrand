@@ -75,7 +75,7 @@
           <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
             <label style="display:block;margin-bottom:var(--space-6)">
               <span style="display:block;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-400)">{{ f.label }}</span>
-              <input type="{{ f.type }}" name="{{ f.name }}" placeholder="{{ f.placeholder }}" required="{{ f.required }}" style="width:100%;box-sizing:border-box;margin-top:10px;padding:14px 0;background:transparent;border:0;border-bottom:2px solid var(--color-neutral-700);color:var(--color-neutral-100);font-size:16px" style-focus="border-color:var(--color-accent);outline:none" />
+              <input type="{{ f.type }}" name="{{ f.name }}" autocomplete="{{ f.autocomplete }}" placeholder="{{ f.placeholder }}" required="{{ f.required }}" style="width:100%;box-sizing:border-box;margin-top:10px;padding:14px 0;background:transparent;border:0;border-bottom:2px solid var(--color-neutral-700);color:var(--color-neutral-100);font-size:16px" style-focus="border-color:var(--color-accent);outline:none" />
             </label>
           </sc-for>
           <label style="display:block;margin-bottom:var(--space-6)">
@@ -238,6 +238,7 @@ class Component extends DCLogic {
         name: f[2],
         required: f[3] ? "required" : null,
         placeholder: f[4],
+        autocomplete: f[2] === "name" ? "name" : f[2] === "company" ? "organization" : f[2] === "email" ? "email" : "off",
       })),
       noteLabel: it.noteLabel,
       notePlaceholder: it.notePlaceholder,
